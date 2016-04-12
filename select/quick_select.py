@@ -1,14 +1,12 @@
 from utils.random_partition import random_partition
-from math import floor
 
 
 def quick_select(arr, start, end, nth):
-    i = random_partition(arr, start, end)
-    print(arr, "\n")
-    print("xxxx", "aa", start, "end", end, "nth", nth, "i", i, "\n")
-    if nth == i:
-        return arr[i]
-    elif nth < i:
-        return quick_select(arr, start, i, nth)
+    partition = random_partition(arr, start, end)
+    relative_nth = partition - start + 1
+    if nth == relative_nth:
+        return arr[partition]
+    elif nth < relative_nth:
+        return quick_select(arr, start, partition - 1, nth)
     else:
-        return quick_select(arr, i, end, nth)
+        return quick_select(arr, partition + 1, end, nth - relative_nth)

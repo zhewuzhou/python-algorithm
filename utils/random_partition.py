@@ -9,7 +9,7 @@ def random_partition(arr, start, end):
 
 def __partition(arr, start, end):
     i = start - 1
-    for j in range(start, end - 1):
+    for j in range(start, end):
         if arr[j] <= arr[end]:
             i = i + 1
             arr[i], arr[j] = arr[j], arr[i]
